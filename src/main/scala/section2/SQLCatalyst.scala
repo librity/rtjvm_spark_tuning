@@ -8,7 +8,7 @@ object SQLCatalyst {
     * Boilerplate
     */
   val spark = SparkSession.builder()
-    .appName("Lesson 2.7 - SQL Catalyst")
+    .appName("Lesson 2.7 - SQL Catalyst (Optimizer)")
     .master("local[*]")
     .getOrCreate()
 
@@ -17,6 +17,13 @@ object SQLCatalyst {
   val sc = spark.sparkContext
   sc.setLogLevel("WARN")
 
+
+  /**
+    * Spark's SQL Catalyst
+    *
+    * - Performs various optimizations on an SQL API query
+    * - What generates the final physical plan
+    */
 
   /**
     * Load Data Frames

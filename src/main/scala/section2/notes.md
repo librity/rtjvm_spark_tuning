@@ -7,7 +7,12 @@
 - https://gist.github.com/smartnose/9f173b4c36dc31310e8efd27c3535a14
 - https://dlab.epfl.ch/2017-09-30-what-i-learned-from-processing-big-data-with-spark/
 
-## PySpark Internals
+### Tungsten
+
+- https://community.cloudera.com/t5/Community-Articles/What-is-Tungsten-for-Apache-Spark/ta-p/248445
+- https://www.databricks.com/blog/2015/04/28/project-tungsten-bringing-spark-closer-to-bare-metal.html
+
+### PySpark Internals
 
 - https://medium.com/analytics-vidhya/how-does-pyspark-work-step-by-step-with-pictures-c011402ccd57
 - https://stackoverflow.com/questions/61816236/does-pyspark-code-run-in-jvm-or-python-subprocess
