@@ -12,11 +12,11 @@ Master Spark optimization techniques with Scala.
 
 ## Sections
 
-1. [](src/main/scala/section1)
-2. [](src/main/scala/section2)
-3. [](src/main/scala/section3)
-4. [](src/main/scala/section4)
-5. [](src/main/scala/section5)
+1. [Scala and Spark Recap](src/main/scala/section1)
+2. [Foundations](src/main/scala/section2)
+3. [Memory, Caching and Checkpointing](src/main/scala/section3)
+4. [Partitioning](src/main/scala/section4)
+5. [Performance Tuning](src/main/scala/section5)
 
 ## Setup
 

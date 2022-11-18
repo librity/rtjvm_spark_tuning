@@ -3,8 +3,6 @@ package section4
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.functions._
 
-import common.{buildJsonPath, inspect, readJsonDF}
-
 object Template {
   /**
     * Boilerplate
