@@ -29,9 +29,12 @@ object Caching {
   /**
     * - Caching is done by executors on partitions
     * - Caching too much can be as bad as caching too little
+    * - Don't drink and cache
+    * - Only cache for really expensive and reusable computations
     * - More caching -> More JVM memory heap -> More garbage collection -> Bad performance
     * - Minimum JVM memory: 4-8GB
     * - Maximum JVM memory: 40GB
+    * - Cache responsibly
     */
 
 
