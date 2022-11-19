@@ -3,7 +3,7 @@ package section4
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.util.SizeEstimator
 
-object ParitionsExercise {
+object ParitionsBenchmark {
   /**
     * Boilerplate
     */
@@ -98,7 +98,7 @@ object ParitionsExercise {
     *   - Result in bytes
     *
     * - Use a Query Plan
-    *   - Most accurate for the DATA
+    *   - Most accurate for UNCOMPRESSED DATA
     *   - Result in bytes
     */
   def dfSizeEstimator() = {
