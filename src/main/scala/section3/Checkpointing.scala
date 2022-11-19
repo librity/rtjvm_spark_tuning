@@ -23,6 +23,9 @@ object Checkpointing {
     * Checkpointing
     *
     * - .checkpoint() is an action
+    * - Needs to be configured with sc.setCheckpointDir()
+    * - CheckpointDir is usually (and recommended) a HDFS
+    *
     * - Like caching
     * - Saves the RDD/DF to external storage and forgets its lineage
     * - No main memory used, only disk
@@ -31,7 +34,6 @@ object Checkpointing {
     * - Node failure with caching => partition is lost & needs to be recomputed
     * - Node failure with checkpointing => partition is reloaded on another executor
     * - Does not force recomputation of a partition if a node fails
-    * - Needs to be configured with sc.setCheckpointDir()
     */
   def demoCheckpoint() = {
     val flights = readJsonDF(spark, "flights")
@@ -131,6 +133,14 @@ object Checkpointing {
     checkpointedFlights.count()
     checkpointedFlights.count()
   }
+
+
+  /**
+    * Conclusions
+    *
+    * - If a JOB is SLOW, use CACHING
+    * - If a JOB is FAILING, use CHECKPOINT
+    */
 
 
   def main(args: Array[String]): Unit = {
