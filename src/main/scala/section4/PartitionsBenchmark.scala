@@ -3,12 +3,12 @@ package section4
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.util.SizeEstimator
 
-object ParitionsBenchmark {
+object PartitionsBenchmark {
   /**
     * Boilerplate
     */
   val spark = SparkSession.builder()
-    .appName("Lesson 4.2 - Paritions Exercise")
+    .appName("Lesson 4.2 - Partitions Benchmark")
     .master("local[*]")
     .getOrCreate()
 
