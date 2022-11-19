@@ -2,12 +2,12 @@ package section2
 
 import org.apache.spark.sql.SparkSession
 
-object Tungsten {
+object TungstenCache {
   /**
     * Boilerplate
     */
   val spark = SparkSession.builder()
-    .appName("Lesson 2.8 - ")
+    .appName("Lesson 2.8 - Tungsten Cache (Optimizer)")
     .master("local[*]")
     .getOrCreate()
 

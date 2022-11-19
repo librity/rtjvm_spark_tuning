@@ -11,6 +11,8 @@
 
 - https://community.cloudera.com/t5/Community-Articles/What-is-Tungsten-for-Apache-Spark/ta-p/248445
 - https://www.databricks.com/blog/2015/04/28/project-tungsten-bringing-spark-closer-to-bare-metal.html
+- https://medium.com/teads-engineering/spark-performance-tuning-from-the-trenches-7cbde521cf60
+- https://stackoverflow.com/questions/51870615/tungsten-encoding-in-spark-sql
 
 ### PySpark Internals
 
