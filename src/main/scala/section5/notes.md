@@ -43,3 +43,8 @@ Solution:
 ```bash
 $ spark-submit --num-executors 176 --executor-memory 41g --executor-cores 5
 ```
+
+## Spark
+
+- https://itnext.io/handling-data-skew-in-apache-spark-9f56343e58e8?gi=30db4f192ca5
+ 
