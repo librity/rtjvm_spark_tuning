@@ -334,25 +334,6 @@ object Serialization {
   //  (new WorkingPersonProcessorV3).processPeople()
 
 
-  /**
-    *
-    */
-
-
-  /**
-    *
-    */
-
-
-  /**
-    *
-    */
-
-
-  /**
-    *
-    */
-
   def main(args: Array[String]): Unit = {
 
   }
