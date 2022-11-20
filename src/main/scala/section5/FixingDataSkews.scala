@@ -91,6 +91,8 @@ object FixingDataSkews {
     *
     * - Took 31 seconds with a maximum task duration of 6 seconds in the join (Stage 2)
     * - For tuning, adjust and test salting interval
+    * - A larger interval will be less skewed but will have a larger Shuffle
+    * - Start small (5 to 10) and test!
     */
   def saltedJoin() = {
     val saltInterval = (0 to 99).toArray

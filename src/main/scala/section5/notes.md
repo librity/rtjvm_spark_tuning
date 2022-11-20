@@ -47,4 +47,14 @@ $ spark-submit --num-executors 176 --executor-memory 41g --executor-cores 5
 ## Spark
 
 - https://itnext.io/handling-data-skew-in-apache-spark-9f56343e58e8?gi=30db4f192ca5
- 
+- https://www.geeksforgeeks.org/scala-closures/
+
+### Serialization
+
+- https://medium.com/@david.borsos/a-tale-of-scala-functions-and-object-serialization-9b1e890cdecb
+- https://docs.google.com/viewer?a=v&pid=sites&srcid=dW10LmVkdS5wa3xiZ2RhdGF8Z3g6ODQxZDhmZjc2ZTFkZjU3
+- https://stackoverflow.com/questions/22592811/task-not-serializable-java-io-notserializableexception-when-calling-function-ou
+- https://medium.com/onzo-tech/serialization-challenges-with-spark-and-scala-a2287cd51c54
+- https://www.nicolaferraro.me/2016/02/22/using-non-serializable-objects-in-apache-spark/
+- https://stackoverflow.com/questions/6163872/how-to-serialize-a-non-serializable-in-java
+- https://dzone.com/articles/what-is-serialization-everything-about-java-serial
