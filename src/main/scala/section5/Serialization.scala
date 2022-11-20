@@ -1,5 +1,6 @@
 package section5
 
+import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.SparkSession
 
 object Serialization {
@@ -7,7 +8,7 @@ object Serialization {
     * Boilerplate
     */
   val spark = SparkSession.builder()
-    .appName("Lesson 5.3 - Serialization")
+    .appName("Lesson 5.3 and 5.4 - Serialization")
     .master("local[*]")
     .config("spark.sql.autoBroadcastJoinThreshold", -1)
     .getOrCreate()
@@ -214,23 +215,123 @@ object Serialization {
 
 
   /**
+    * Lesson 5.4
     *
+    * - Won't work: Even though BrokenPersonProcessor is serializable,
+    * DrinkingAgeChecker.check isn't
     */
+  class BrokenPersonProcessor extends Serializable {
+    class DrinkingAgeChecker(legalAge: Int) {
+      def check(age: Int) = age >= legalAge
+    }
+
+    class DrinkingAgeFlagger(checker: Int => Boolean) {
+      def flag() = people.map(person => checker(person.age))
+    }
+
+    def processPeople() = {
+      val usChecker = new DrinkingAgeChecker(21)
+      val flagger = new DrinkingAgeFlagger(usChecker.check)
+
+      flagger.flag()
+    }
+  }
+
+  //  (new BrokenPersonProcessor).processPeople()
+
+  /**
+    * Solution 1
+    *
+    * - Make all the classes Serializable
+    */
+  class WorkingPersonProcessorV1 extends Serializable {
+    class DrinkingAgeChecker(legalAge: Int) extends Serializable {
+      def check(age: Int) = age >= legalAge
+    }
+
+    class DrinkingAgeFlagger(checker: Int => Boolean) extends Serializable {
+      def flag() = people.map(person => checker(person.age))
+    }
+
+    def processPeople() = {
+      val usChecker = new DrinkingAgeChecker(21)
+      val flagger = new DrinkingAgeFlagger(usChecker.check)
+
+      flagger.flag()
+    }
+  }
+
+  //  (new WorkingPersonProcessorV1).processPeople()
 
 
   /**
+    * Solution 2
     *
+    * - Use a Serializable FunctionX
     */
+  class WorkingPersonProcessorV2 {
+    class DrinkingAgeChecker(legalAge: Int) {
+      def check(age: Int): Boolean = {
+        val enclosedAge = legalAge
+
+        age >= enclosedAge
+      }
+    }
+
+    class DrinkingAgeFlagger(checker: Function1[Int, Boolean]) {
+      def flag(): RDD[Boolean] = {
+        val enclosedChecker = checker
+
+        val checkPerson = new Function1[Person, Boolean] {
+          override def apply(person: Person): Boolean = {
+            enclosedChecker(person.age)
+          }
+        }
+
+        people.map(checkPerson)
+      }
+    }
+
+    def processPeople(): RDD[Boolean] = {
+      val usChecker = new DrinkingAgeChecker(21)
+      val flagger = new DrinkingAgeFlagger(usChecker.check)
+
+      flagger.flag()
+    }
+  }
+
+  //  (new WorkingPersonProcessorV2).processPeople()
 
 
   /**
-    *
+    * Daniel's Solution
     */
+  class WorkingPersonProcessorV3 {
+    class DrinkingAgeChecker(legalAge: Int) {
+      val check = {
+        val enclosedLegalAge = legalAge
 
+        age: Int => age >= enclosedLegalAge
+      }
+    }
 
-  /**
-    *
-    */
+    class DrinkingAgeFlagger(checker: Int => Boolean) {
+      def flag() = {
+        val enclosedChecker = checker
+
+        people.map(person => enclosedChecker(person.age))
+      }
+    }
+
+    def processPeople() = {
+      val usChecker = new DrinkingAgeChecker(21)
+      val flagger = new DrinkingAgeFlagger(usChecker.check)
+
+      flagger.flag()
+    }
+  }
+
+  //  (new WorkingPersonProcessorV3).processPeople()
 
 
   /**
