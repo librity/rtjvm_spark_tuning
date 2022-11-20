@@ -10,6 +10,8 @@ Master Spark optimization techniques with Scala.
 
 ![Certificate of Completion](.github/certificate.png)
 
+> I'm the operator with my cluster calculator
+
 ## Sections
 
 1. [Scala and Spark Recap](src/main/scala/section1)
